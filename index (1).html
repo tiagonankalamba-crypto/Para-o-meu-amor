@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Para o Amor da Minha Vida</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            background: linear-gradient(145deg, #fff0f5 0%, #ffe4e9 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        /* Container principal que vai trocar de conteúdo */
+        .container {
+            max-width: 650px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(1px);
+            border-radius: 68px;
+            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(255, 215, 215, 0.6);
+            overflow: hidden;
+            transition: all 0.4s ease;
+        }
+
+        /* Telas (cards) */
+        .screen {
+            padding: 50px 30px 60px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Texto de boas-vindas */
+        .welcome-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #b2225c;
+            text-shadow: 3px 3px 0 #ffc0cb;
+            letter-spacing: 2px;
+            word-break: keep-all;
+            line-height: 1.2;
+        }
+
+        .welcome-sub {
+            font-size: 1.3rem;
+            color: #c4456e;
+            font-style: italic;
+        }
+
+        /* Vinheta / botão romântico */
+        .invite-btn {
+            background: #ff6b8b;
+            border: none;
+            padding: 16px 40px;
+            border-radius: 60px;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            cursor: pointer;
+            box-shadow: 0 8px 0 #9b2e4b;
+            transition: 0.1s linear;
+            font-family: inherit;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .invite-btn:active {
+            transform: translateY(4px);
+            box-shadow: 0 4px 0 #9b2e4b;
+        }
+
+        /* Coração pulsante */
+        .heart-beat {
+            font-size: 2rem;
+            display: inline-block;
+            animation: pulse 1.2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); text-shadow: 0 0 5px #ff3366; }
+            100% { transform: scale(1); }
+        }
+
+        /* Página do pedido */
+        .proposal-title {
+            font-size: 2.5rem;
+            color: #c0395e;
+            margin-bottom: 20px;
+        }
+
+        .romantic-text {
+            font-size: 1.3rem;
+            color: #5e2a3e;
+            line-height: 1.5;
+            margin: 20px 0;
+            background: rgba(255, 245, 245, 0.9);
+            padding: 20px;
+            border-radius: 50px;
+        }
+
+        .question {
+            font-size: 2rem;
+            font-weight: bold;
+            margin: 20px 0 25px;
+            background: #fce4ec;
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 60px;
+            color: #a52a5a;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            flex-wrap: wrap;
+            margin: 15px 0 20px;
+        }
+
+        .btn-yes, .btn-no {
+            font-size: 1.6rem;
+            font-weight: bold;
+            padding: 12px 32px;
+            border: none;
+            border-radius: 48px;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .btn-yes {
+            background-color: #e8436e;
+            color: white;
+        }
+
+        .btn-yes:hover {
+            background-color: #d6345f;
+            transform: scale(1.02);
+        }
+
+        .btn-no {
+            background-color: #b0a0a5;
+            color: #2d1c23;
+        }
+
+        .btn-no:hover {
+            background-color: #9c8a91;
+        }
+
+        .response-message {
+            margin-top: 25px;
+            font-size: 1.2rem;
+            background: #fff0f3;
+            padding: 12px;
+            border-radius: 60px;
+            min-height: 65px;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .final-engagement {
+            background: #ffdce5;
+            border-radius: 48px;
+            padding: 20px;
+            margin-top: 10px;
+            font-size: 1.2rem;
+            color: #9e2a4a;
+            font-weight: bold;
+        }
+
+        footer {
+            font-size: 0.75rem;
+            text-align: center;
+            padding: 12px;
+            color: #bc7a8f;
+            background: #ffeef2;
+            border-top: 1px solid #ffcfdf;
+        }
+
+        @media (max-width: 500px) {
+            .screen { padding: 35px 20px 45px; }
+            .welcome-title { font-size: 2.2rem; }
+            .invite-btn { font-size: 1.2rem; padding: 12px 28px;}
+            .proposal-title { font-size: 1.8rem; }
+            .question { font-size: 1.6rem; }
+            .btn-yes, .btn-no { font-size: 1.3rem; padding: 8px 24px;}
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="appContainer">
+    <!-- TELA 1: Bem vindo, amor + vinheta de acesso -->
+    <div id="welcomeScreen" class="screen">
+        <div>
+            <div class="welcome-title">✨ BEM VINDO AMOR ✨</div>
+            <div class="welcome-sub">Você é a razão do meu sorriso todos os dias.</div>
+        </div>
+        <button id="accessButton" class="invite-btn">
+            <span class="heart-beat">❤️</span> Clique aqui, meu amor <span class="heart-beat">❤️</span>
+        </button>
+        <div style="font-size: 0.9rem; color:#b45f7a;">(Toque no coração para continuarmos)</div>
+    </div>
+
+    <!-- TELA 2: PEDIDO DE CASAMENTO (inicialmente escondido) -->
+    <div id="proposalScreen" class="screen hidden">
+        <div class="proposal-title">💍 Meu Grande Amor 💍</div>
+        <div class="romantic-text">
+            Desde o dia em que você entrou na minha vida, tudo ganhou mais cor, mais leveza e mais sentido.<br><br>
+            Cada momento ao seu lado é uma página que quero escrever para sempre.<br>
+            Você é meu lugar favorito no mundo.
+        </div>
+        <div class="question">
+            Quer casar comigo?
+        </div>
+        <div class="buttons">
+            <button id="yesButton" class="btn-yes">✅ SIM, ACEITO ❤️</button>
+            <button id="noButton" class="btn-no">💔 Não... (é pegadinha?) 💔</button>
+        </div>
+        <div id="responseArea" class="response-message">
+            <!-- Aqui aparece a resposta -->
+        </div>
+    </div>
+    <footer>
+        Feito com todo amor do mundo para você, meu amor. 🌹
+    </footer>
+</div>
+
+<script>
+    // Elementos
+    const welcomeScreen = document.getElementById('welcomeScreen');
+    const proposalScreen = document.getElementById('proposalScreen');
+    const accessBtn = document.getElementById('accessButton');
+    const yesBtn = document.getElementById('yesButton');
+    const noBtn = document.getElementById('noButton');
+    const responseArea = document.getElementById('responseArea');
+
+    // Função para ir para a tela do pedido
+    function goToProposal() {
+        // esconde tela de boas vindas, mostra a do pedido
+        welcomeScreen.classList.add('hidden');
+        proposalScreen.classList.remove('hidden');
+        // Limpa mensagens anteriores quando voltar? Garantir que sim, mas só ao entrar
+        if (responseArea) {
+            responseArea.innerHTML = '';
+        }
+        // também podemos resetar qualquer estado extra
+        // remove possíveis classes finais se houver
+    }
+
+    // Evento do botão da vinheta
+    accessBtn.addEventListener('click', goToProposal);
+
+    // Lógica do SIM
+    function handleYes() {
+        responseArea.innerHTML = `
+            <div style="background: #e8436e20; padding: 12px; border-radius: 40px;">
+                🎉❤️💍 EU TE AMO INFINITAMENTE! 💍❤️🎉<br>
+                <strong style="font-size:1.2rem;">Você me fez o homem mais feliz do mundo!</strong><br>
+                Vamos construir nossa história juntos, meu amor! 👰‍♀️🤵‍♂️
+            </div>
+            <div class="final-engagement">
+                ✨✨✨ AGORA É OFICIAL: VAMOS CASAR! ✨✨✨<br>
+                📍 Combinamos os detalhes com muito amor 💕
+            </div>
+        `;
+        // Um toque extra para nunca esquecer: desabilita os botões? mas opcional
+        yesBtn.disabled = false;  // mantém o sim, mas não precisa
+        noBtn.disabled = false;
+        // não deixar spam, mas tudo bem.
+        // pequeno efeito de rolagem suave pra ver a resposta
+        responseArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    // Lógica do NÃO (brincadeira romântica - o não meio que redireciona para o sim)
+    function handleNo() {
+        responseArea.innerHTML = `
+            <div style="background:#ffb6c1; border-radius: 40px; padding: 12px;">
+                😢 Hum... não tem jeito, seu coraçãozinho vai dizer SIM! 😢<br>
+                <span style="font-size:1.1rem;">Clique no "SIM" e me faça o homem mais realizado do mundo 🌹</span>
+                <div style="margin-top: 8px;">💞 Meu amor, a única resposta certa é SIM! 💞</div>
+            </div>
+        `;
+        // Faz o botão SIM piscar suavemente para incentivar
+        yesBtn.style.transform = "scale(1.05)";
+        setTimeout(() => { yesBtn.style.transform = ""; }, 500);
+        // Dá um toque carinhoso
+        responseArea.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+
+    yesBtn.addEventListener('click', handleYes);
+    noBtn.addEventListener('click', handleNo);
+    
+    // Pequeno detalhe: Ao carregar a página, se por acaso alguém tentar acessar a tela2 direto? não, está oculta.
+    // Caso queira um efeito adicional de corações? puro amor já está ok.
+    console.log("Página pronta para o pedido mais lindo!");
+</script>
+</body>
+</html
+  <head>
+    <title>Hello, World!</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+      <h1 class="title">Hello World!</h1>
+      <p id="currentTime"></p>
+      <script src="script.js"></script>
+  </body>
+</html>
